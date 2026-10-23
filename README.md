@@ -13,12 +13,22 @@ as `user.wview_davisconsoleapi.schema`; the mirror source keeps the old
 
 ## Install
 
+An existing WeeWX station is required. Replace `/path/to/weewx.conf`
+with its configuration file before running the commands.
+
 The catalog release requires Python >=3.10,<3.15 and WeeWX >=5.5,<6.
+
+Before running the commands, activate the existing virtual environment that
+runs your WeeWX service. Both `python` and `weectl` must come from that
+environment. For an OS-packaged WeeWX installation, use compatible distribution
+packages instead, or migrate WeeWX and its service to a virtual environment
+first. Installing into an unrelated virtual environment will not supply the
+running service with dependencies.
 
 Install `requests` in the WeeWX Python environment:
 
 ```sh
-python -m pip install requests
+python -m pip install 'requests>=2,<3'
 ```
 
 Use the `weectl` from your WeeWX Python environment:
@@ -27,9 +37,9 @@ Use the `weectl` from your WeeWX Python environment:
 weectl extension install https://github.com/weewx-packages/catalog/releases/download/davisconsoleapi/v0.43.post2/davisconsoleapi-0.43.post2.tar.gz --config=/path/to/weewx.conf
 ```
 
-Replace `/path/to/weewx.conf` with your station configuration. Stock WeeWX 5
-accepts this fixed URL or a downloaded copy of the same archive. No catalog
-integration is required. Restart WeeWX yourself after configuration changes.
+Stock WeeWX 5 accepts this fixed URL or a downloaded copy of the same archive.
+No catalog integration is required. Restart WeeWX yourself after configuration
+changes.
 
 ## Configure cloud acquisition
 
